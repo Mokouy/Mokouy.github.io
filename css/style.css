@@ -1685,21 +1685,21 @@ a.article-title:hover {
   color: #fff;
 }
 .article-share-twitter:before {
-  content: "\f099";
+  content: "\f1d6";
 }
 .article-share-twitter:hover {
   background: #00aced;
   text-shadow: 0 1px #008abe;
 }
 .article-share-facebook:before {
-  content: "\f09a";
+  content: "\f1d7";
 }
 .article-share-facebook:hover {
   background: #3b5998;
   text-shadow: 0 1px #2f477a;
 }
 .article-share-pinterest:before {
-  content: "\f0d2";
+  content: "\f18a";
 }
 .article-share-pinterest:hover {
   background: #cb2027;
