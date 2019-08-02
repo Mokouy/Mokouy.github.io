@@ -56,7 +56,7 @@
           '<input class="article-share-input" value="' + url + '">',
           '<div class="article-share-links">',
             '<a href="https://connect.qq.com/widget/shareqq/index.html?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="QQ"></a>',
-            '<a href="https://common.cnblogs.com/qrcode.html?url=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="微信"></a>',
+            // '<a href="https://common.cnblogs.com/qrcode.html?url=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="微信"></a>',
             '<a href="https://service.weibo.com/share/share.php?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="微博"></a>',
             // '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
           '</div>',
