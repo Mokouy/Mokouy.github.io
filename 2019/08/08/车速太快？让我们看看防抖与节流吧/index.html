@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="妹红小站">
 <meta property="og:description" content="什么是防抖？什么是节流？他们之间有什么区别？又如何去实现他们？ 实时交互与搜索请求车速太快，一不小心触发了千百次，老年机的页面当场爆炸究竟是人性的扭曲还是……">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-08T06:37:19.293Z">
+<meta property="og:updated_time" content="2019-08-08T06:40:50.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车速太快？让我们看看防抖与节流吧">
 <meta name="twitter:description" content="什么是防抖？什么是节流？他们之间有什么区别？又如何去实现他们？ 实时交互与搜索请求车速太快，一不小心触发了千百次，老年机的页面当场爆炸究竟是人性的扭曲还是……">
@@ -108,8 +108,7 @@
 <a id="more"></a>
 
 <p>言归正传，<strong>防抖</strong>和<strong>节流</strong>到底是什么？</p>
-<p>###1.防抖</p>
-<blockquote>
+<h3 id="1-防抖"><a href="#1-防抖" class="headerlink" title="1.防抖"></a>1.防抖</h3><blockquote>
 <p>触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间</p>
 </blockquote>
 <p>也即是说如果我们在每一次调用函数前给一个等待时间的参数，如果时机未到又触发了一次，则清空时间并重新计时。</p>
@@ -121,8 +120,7 @@
 <p>接下来开始进行不断的滚动操作时，在每次触发scroll事件的时候都会清除上次的延时器同时记录一个新的延时器</p>
 <p>只有当scroll事件停止触发后（上面的例子设定为1000毫秒），最后一次记录的延时器才不会被清除，<br>从而执行下一步操作</p>
 <p>这也是防抖函数的原理</p>
-<p>###2.节流</p>
-<blockquote>
+<h3 id="2-节流"><a href="#2-节流" class="headerlink" title="2.节流"></a>2.节流</h3><blockquote>
 <p>高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率</p>
 </blockquote>
 <p>与防抖大体相同，都是要在执行方法前去判断一个等待执行的延时函数</p>
@@ -137,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mokou.work/2019/08/08/车速太快？让我们看看防抖与节流吧/" data-id="cjz2b7gg80008f0m459rbzuv1" class="article-share-link">分享</a>
+      <a data-url="http://mokou.work/2019/08/08/车速太快？让我们看看防抖与节流吧/" data-id="cjz2bbu5q0008tgm4h13zxqt0" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
