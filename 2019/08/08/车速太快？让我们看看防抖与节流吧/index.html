@@ -6,14 +6,14 @@
   <title>车速太快？让我们看看防抖与节流吧 | 妹红小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="什么是防抖？什么是节流？他们之间有什么区别？又如何去实现他们？ 实时交互与搜索请求车速太快，一不小心触发了千百次，老年机的页面当场爆炸究竟是人性的扭曲还是……">
-<meta name="keywords" content="面试题,JavaScript,前端">
+<meta name="keywords" content="面试题,JavaScript,前端,性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="车速太快？让我们看看防抖与节流吧">
 <meta property="og:url" content="http://mokou.work/2019/08/08/车速太快？让我们看看防抖与节流吧/index.html">
 <meta property="og:site_name" content="妹红小站">
 <meta property="og:description" content="什么是防抖？什么是节流？他们之间有什么区别？又如何去实现他们？ 实时交互与搜索请求车速太快，一不小心触发了千百次，老年机的页面当场爆炸究竟是人性的扭曲还是……">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-08T04:01:38.959Z">
+<meta property="og:updated_time" content="2019-08-08T06:37:19.293Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="车速太快？让我们看看防抖与节流吧">
 <meta name="twitter:description" content="什么是防抖？什么是节流？他们之间有什么区别？又如何去实现他们？ 实时交互与搜索请求车速太快，一不小心触发了千百次，老年机的页面当场爆炸究竟是人性的扭曲还是……">
@@ -39,11 +39,11 @@
   <div class="widget">
     <img class="avatar" src="/images/avatar.jpg">
     <h2 class="author">Mokouy</h2>
-    <h3 class="description">死宅</h3>
+    <h3 class="description">前端规则长方体空间移动工程师</h3>
     <div class="count-box">
       <a href="/archives"><div><strong>4</strong><br>文章</div></a>
       <a href="/categories"><div><strong>3</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>6</strong><br>标签</div></a>
     </div>
     <ul class="blog-link">
      
@@ -96,7 +96,7 @@
   </div>
 
           
-            <span class="post-count">字数统计: 125 字</span>
+            <span class="post-count">字数统计: 690 字</span>
           
         </div>
       </header>
@@ -108,20 +108,39 @@
 <a id="more"></a>
 
 <p>言归正传，<strong>防抖</strong>和<strong>节流</strong>到底是什么？</p>
-<ol>
-<li>防抖<blockquote>
+<p>###1.防抖</p>
+<blockquote>
 <p>触发高频事件后n秒内函数只会执行一次，如果n秒内高频事件再次被触发，则重新计算时间</p>
 </blockquote>
-</li>
-</ol>
+<p>也即是说如果我们在每一次调用函数前给一个等待时间的参数，如果时机未到又触发了一次，则清空时间并重新计时。</p>
+<p>例如这里有一个持续触发scroll事件时，我们并不立即执行它对应的函数，而当1000毫秒内没有触发scroll事件时，才会延时触发一次handle函数。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timeout = <span class="literal">null</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timeout !== <span class="literal">null</span>)</span><br><span class="line">      clearTimeout(timeout);  </span><br><span class="line">    timeout = setTimeout(fn, wait);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"></span>) </span>&#123;   </span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'scroll'</span>, debounce(handle, <span class="number">1000</span>))</span><br></pre></td></tr></table></figure>
+
+<p><code>addEventListener</code>的第二个参数实际上是<code>debounce</code>函数里return返回的方法</p>
+<p>也就是说<code>let timeout = null</code>这行代码只在<code>addEventListener</code>的时候执行了一次而触发事件的时候不会执行</p>
+<p>接下来开始进行不断的滚动操作时，在每次触发scroll事件的时候都会清除上次的延时器同时记录一个新的延时器</p>
+<p>只有当scroll事件停止触发后（上面的例子设定为1000毫秒），最后一次记录的延时器才不会被清除，<br>从而执行下一步操作</p>
+<p>这也是防抖函数的原理</p>
+<p>###2.节流</p>
+<blockquote>
+<p>高频事件触发，但在n秒内只会执行一次，所以节流会稀释函数的执行频率</p>
+</blockquote>
+<p>与防抖大体相同，都是要在执行方法前去判断一个等待执行的延时函数</p>
+<p>不同的是，防抖是在所有的操作完毕后去执行一次方法，而节流是在操作过程中每隔一段设定好的时间去执行一次</p>
+<p>防抖如电路中的防反跳，节流如水坝</p>
+<p>同样，一个例子如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">let</span> canRun = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!canRun)</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        canRun = <span class="literal">false</span>;</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">          fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">          canRun = <span class="literal">true</span>;</span><br><span class="line">        &#125;, <span class="number">500</span>);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">handle</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// do something</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'resize'</span>, throttle(handle));</span><br></pre></td></tr></table></figure>
+
+<p>与防抖基本同理，区别就在于控制是否调用的关键从停止触发后一段时间调用，变成了隔一段设定好的时间（上面的例子为500毫秒）去调用一次</p>
+<p>这下再也不用担心各种触发碰一下就飙到几百码，一个排水渠过弯把网络和渲染甩到身后了</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mokou.work/2019/08/08/车速太快？让我们看看防抖与节流吧/" data-id="cjz295hbj0003hgm40fhownww" class="article-share-link">分享</a>
+      <a data-url="http://mokou.work/2019/08/08/车速太快？让我们看看防抖与节流吧/" data-id="cjz2b7gg80008f0m459rbzuv1" class="article-share-link">分享</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
 
     </footer>
   </div>
@@ -180,11 +199,11 @@
   <div class="widget">
     <img class="avatar" src="/images/avatar.jpg">
     <h2 class="author">Mokouy</h2>
-    <h3 class="description">死宅</h3>
+    <h3 class="description">前端规则长方体空间移动工程师</h3>
     <div class="count-box">
       <a href="/archives"><div><strong>4</strong><br>文章</div></a>
       <a href="/categories"><div><strong>3</strong><br>分类</div></a>
-      <a href="/tags"><div><strong>5</strong><br>标签</div></a>
+      <a href="/tags"><div><strong>6</strong><br>标签</div></a>
     </div>
 
 
