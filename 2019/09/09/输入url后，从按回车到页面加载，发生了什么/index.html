@@ -6,14 +6,14 @@
   <title>输入url后，从按回车到页面加载，发生了什么? | 妹红小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="噼里啪啦拍完神秘网址，“啪”的一下按下回车，页面就跳到了你想到达的地方">
-<meta name="keywords" content="面试题,网络,前端">
+<meta name="keywords" content="面试题,前端,网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="输入url后，从按回车到页面加载，发生了什么?">
 <meta property="og:url" content="http://mokou.work/2019/09/09/输入url后，从按回车到页面加载，发生了什么/index.html">
 <meta property="og:site_name" content="妹红小站">
 <meta property="og:description" content="噼里啪啦拍完神秘网址，“啪”的一下按下回车，页面就跳到了你想到达的地方">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-09T02:33:32.311Z">
+<meta property="og:updated_time" content="2019-09-09T02:35:46.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="输入url后，从按回车到页面加载，发生了什么?">
 <meta name="twitter:description" content="噼里啪啦拍完神秘网址，“啪”的一下按下回车，页面就跳到了你想到达的地方">
@@ -121,7 +121,7 @@
 <p>那么DNS是如何去解析IP地址的呢，首先检查浏览器缓存中以及操作系统缓存中有没有对应的已解析过的结果（hosts文件），若没有则请求本地域名服务器（LDNS）来解析这个域名</p>
 <p>若未成功解析，则跳转到根域名服务器，根域名服务器给予一个主域名服务器地址，然后本地域名服务器再去请求主域名服务器地址</p>
 <p>接着主域名服务器会返回网站注册域名的服务器Name<br>server的地址，本地服务器又去访问Name server，最终找到ip地址并返回给本地域名服务器，然后缓存该ip地址，解析结束。我们就来到了下一步</p>
-<p>###2 建立连接，发送请求<br>首先，传输控制协议（Transmission Control Protocol，缩写：TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议</p>
+<h3 id="2-建立连接，发送请求"><a href="#2-建立连接，发送请求" class="headerlink" title="2 建立连接，发送请求"></a>2 建立连接，发送请求</h3><p>首先，传输控制协议（Transmission Control Protocol，缩写：TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议</p>
 <p>没错，又是一个协议，TCP把连接作为最基本的对象，每一条TCP连接都有两个端点，这种断点我们叫作套接字（socket），它的定义为端口号拼接到IP地址即构成了套接字，例如IP地址为233.3.3.33，而端口号为80，那么得到的套接字为233.3.3.33:80。</p>
 <p>更多的概念我们也不再赘述，感兴趣可以去学习关于TCP协议的文章</p>
 <p>那么在域名解析后我们是如何建立连接的呢，那就是TCP的三次握手</p>
@@ -143,7 +143,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://mokou.work/2019/09/09/输入url后，从按回车到页面加载，发生了什么/" data-id="ck0bslo4z0001qsm4wg6sziw6" class="article-share-link">分享</a>
+      <a data-url="http://mokou.work/2019/09/09/输入url后，从按回车到页面加载，发生了什么/" data-id="ck0bt9gtx000870m488k90qtd" class="article-share-link">分享</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
