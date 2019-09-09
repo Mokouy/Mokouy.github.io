@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>输入url后，从按回车到页面加载，发生了什么? | 妹红小站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="噼里啪啦拍完神秘网址，“啪”的一下按下回车，页面就跳到了你想到达的地方">
+<meta name="keywords" content="面试题,网络,前端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="输入url后，从按回车到页面加载，发生了什么?">
+<meta property="og:url" content="http://mokou.work/2019/09/09/输入url后，从按回车到页面加载，发生了什么/index.html">
+<meta property="og:site_name" content="妹红小站">
+<meta property="og:description" content="噼里啪啦拍完神秘网址，“啪”的一下按下回车，页面就跳到了你想到达的地方">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-09T02:33:32.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="输入url后，从按回车到页面加载，发生了什么?">
+<meta name="twitter:description" content="噼里啪啦拍完神秘网址，“啪”的一下按下回车，页面就跳到了你想到达的地方">
+  
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/plugin/bganimation/bg.css">
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <div class="outer">
+        <div class="widget-wrap mobile-header">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="/images/avatar.jpg">
+    <h2 class="author">Mokouy</h2>
+    <h3 class="description">前端规则长方体空间移动工程师</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>7</strong><br>标签</div></a>
+    </div>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+        <section id="main"><article id="post-输入url后，从按回车到页面加载，发生了什么" class="wow slideInRight article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/09/09/输入url后，从按回车到页面加载，发生了什么/" class="article-date">
+  <time class="post-time" datetime="2019-09-09T01:37:10.000Z" itemprop="datePublished">
+    <span class="post-month">9月</span><br/>
+    <span class="post-day">09</span>
+  </time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      输入url后，从按回车到页面加载，发生了什么?
+    </h1>
+  
+
+
+        <div>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>,<a class="article-category-link" href="/categories/技术/网络/">网络</a>
+  </div>
+
+          
+            <span class="post-count">字数统计: 1.6k 字</span>
+          
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>噼里啪啦拍完神秘网址，“啪”的一下按下回车，页面就跳到了你想到达的地方</p>
+<a id="more"></a>
+<p>当然也有可能是404</p>
+<p>那么这中间都发生了什么呢，今天让我们来走进网址跳转背后的故事</p>
+<h3 id="1-DNS解析IP地址"><a href="#1-DNS解析IP地址" class="headerlink" title="1 DNS解析IP地址"></a>1 DNS解析IP地址</h3><p>首先，什么是IP地址？</p>
+<p>互联网协议地址（Internet Protocol Address，又译为网际协议地址），缩写为IP地址（IP Address），是分配给网络上使用网际协议（Internet Protocol, IP）的设备的数字标签。</p>
+<p>这里就有一个很多萌新搞混的概念，那就是IP和IP地址</p>
+<p>其实上面的概念已经解释的很清楚了，IP地址是一个网络地址，而IP是一种网络协议，甚至他本身就是网络协议的缩写；他们之间的区别就好像家门口的门牌号和解读门牌号的规则一样</p>
+<p>当然，我们这篇文章的重点不在这里，让我们接着看DNS是什么</p>
+<p>域名系统（Domain Name System，缩写：DNS）是互联网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网</p>
+<p>我们平时访问一个网站，通常都是使用主机名或域名来访问，而不是直接通过IP地址来访问。</p>
+<p>因为IP地址是一组纯数字，比较难记。比如说，比如某同性交友网站的IP地址为119.3.32.96,而域名是一个www开头com结尾的神秘链接（也有可能是多个，这样你就不能通过IP地址直接访问网页了）</p>
+<p>如果我们用IP地址去访问网站，那是很难记得住的，而用域名就比较容易记住了。</p>
+<p>但是呢，计算机的能力是有极限的。计算机在短暂的机生当中学到一件事，越是玩弄花里胡哨的域名,就越会发现计算机的能力是有极限的，除非超越计算机……</p>
+<p>你要计算机去理解名称，你这是为难他计算机。计算机比较擅长处理一长串数字。所以为了解决这个问题，就有了DNS服务。</p>
+<p>那么DNS是如何去解析IP地址的呢，首先检查浏览器缓存中以及操作系统缓存中有没有对应的已解析过的结果（hosts文件），若没有则请求本地域名服务器（LDNS）来解析这个域名</p>
+<p>若未成功解析，则跳转到根域名服务器，根域名服务器给予一个主域名服务器地址，然后本地域名服务器再去请求主域名服务器地址</p>
+<p>接着主域名服务器会返回网站注册域名的服务器Name<br>server的地址，本地服务器又去访问Name server，最终找到ip地址并返回给本地域名服务器，然后缓存该ip地址，解析结束。我们就来到了下一步</p>
+<p>###2 建立连接，发送请求<br>首先，传输控制协议（Transmission Control Protocol，缩写：TCP）是一种面向连接的、可靠的、基于字节流的传输层通信协议</p>
+<p>没错，又是一个协议，TCP把连接作为最基本的对象，每一条TCP连接都有两个端点，这种断点我们叫作套接字（socket），它的定义为端口号拼接到IP地址即构成了套接字，例如IP地址为233.3.3.33，而端口号为80，那么得到的套接字为233.3.3.33:80。</p>
+<p>更多的概念我们也不再赘述，感兴趣可以去学习关于TCP协议的文章</p>
+<p>那么在域名解析后我们是如何建立连接的呢，那就是TCP的三次握手</p>
+<p>客户端向服务端发送一个SYN报文，请求建立连接。</p>
+<p>服务端收到报文确认后，发送一个SYN-ACK报文，表示确认收到请求。</p>
+<p>客户端收到服务器的报文后，返回一个ACK报文，连接建立。</p>
+<p>随后客户端向服务器发起一个HTTP-GET方法报文请求</p>
+<p>请求中包含访问的URL，KeepAlive，长连接，还有User-Agent用户浏览器操作系统信息，编码等。</p>
+<h3 id="3-服务器处理"><a href="#3-服务器处理" class="headerlink" title="3 服务器处理"></a>3 服务器处理</h3><p>在数据进入服务端之前，可能还会先经过负载均衡服务器，它会将请求合理分发到多台服务器上</p>
+<p>这是假设服务器端响应一个HTML文件。那么客户端浏览器就会判断状态码是什么，如果是200就会继续解析，如果是400或500就会报错，如果是300就会进行重定向。</p>
+<p>例如，对于大型网站存在多个主机站点，为了负载均衡或者导入流量，提高SEO排名，往往不会直接返回请求页面，而是进行重定向。当浏览器知道了重定向后最终的访问地址之后，会重新发送一个http请求，发送内容同上。</p>
+<p>而服务端接收到请求后，就会处理并返回一个响应</p>
+<h3 id="4-浏览器解析"><a href="#4-浏览器解析" class="headerlink" title="4 浏览器解析"></a>4 浏览器解析</h3><p>在浏览器接收到服务器的响应后，会解析来自服务器的报文响应，由于在报头中Content-type为“text/html”，浏览器会以HTML形式呈现，而不是下载文件。</p>
+<p>同理如果是gzip格式的话，浏览器会先解压一下，然后通过文件的编码格式知道该如何去解码文件。</p>
+<p>浏览器会根据HTML去构建DOM树和CSSOM树。如果遇到script标签的话，会判断是否存在async或者defer，前者会并行进行下载并执行js；后者会先下载文件；然后等待html解析完成后顺序执行，如果以上都没有，就会阻塞住渲染流程直至js文件执行完毕。</p>
+<p>CSSOM树和DOM树构建完成后会开始生成render树，这也就是到了最后一步啦。</p>
+<p>确定页面元素的布局、样式等等诸多方面的东西。同时在生成render树的过程中，浏览器就开始调用GPU绘制，合成图层，最后，将内容显示在屏幕上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://mokou.work/2019/09/09/输入url后，从按回车到页面加载，发生了什么/" data-id="ck0bslo4z0001qsm4wg6sziw6" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络/">网络</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试题/">面试题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/08/08/车速太快？让我们看看防抖与节流吧/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">车速太快？让我们看看防抖与节流吧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <h1 class="blog-title">妹红小站</h1>
+    <h2 class="blog-subtitle">大哥，算了，算了</h2>
+    <ul class="blog-link">
+     
+          <a href="/" title="Home">
+            <li>主页</li>
+          </a>
+        
+          <a href="/archives" title="Archives">
+            <li>归档</li>
+          </a>
+        
+          <a href="/categories" title="Categories">
+            <li>分类</li>
+          </a>
+        
+          <a href="/tags" title="Tags">
+            <li>标签</li>
+          </a>
+        
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title"></h3>
+  <div class="widget">
+    <img class="avatar" src="/images/avatar.jpg">
+    <h2 class="author">Mokouy</h2>
+    <h3 class="description">前端规则长方体空间移动工程师</h3>
+    <div class="count-box">
+      <a href="/archives"><div><strong>5</strong><br>文章</div></a>
+      <a href="/categories"><div><strong>4</strong><br>分类</div></a>
+      <a href="/tags"><div><strong>7</strong><br>标签</div></a>
+    </div>
+
+
+
+    <div class="social-link">
+      
+        <a class="hvr-bounce-in" href="http://github.com/Mokouy" target="_blank" title="Github">
+          Github
+        </a>
+      
+        <a class="hvr-bounce-in" href="tencent://AddContact/?fromId=45&amp;fromSubId=1&amp;subcmd=all&amp;uin=249548603&amp;website=www.oicqzone.com" target="_blank" title="QQ">
+          QQ
+        </a>
+      
+    </div>
+
+    <div class="friend-link">
+      <h2>友情链接</h2>
+      
+        <a class="hvr-bounce-in" href="http://blog.shanamaid.top/" target="_blank" title="ShanaMaid">
+          ShanaMaid
+        </a>
+      
+        <a class="hvr-bounce-in" href="http://www.bilibili.com/" target="_blank" title="Bilibili">
+          Bilibili
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy;2018 - 2019 Mokouy<br>
+      妹红小站由<a href="http://hexo.io/" target="_blank">Hexo</a>强力驱动 |
+      主题-<a href="https://github.com/ShanaMaid/hexo-theme-shana">Shana</a>
+      
+    </div>
+
+  </div>
+</footer>
+
+    </div>
+    
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="//apps.bdimg.com/libs/wow/0.1.6/wow.min.js"></script>
+<script>
+new WOW().init();
+</script>   
+
+
+  <link rel="stylesheet" href="/plugin/fancybox/jquery.fancybox.css">
+  <script src="/plugin/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+  <link rel="stylesheet" href="/plugin/galmenu/GalMenu.css">
+  <script src="/plugin/galmenu/GalMenu.js"></script>
+  <div class="GalMenu GalDropDown">
+      <div class="circle" id="gal">
+        <div class="ring">
+          
+            <a href="/" title="" class="menuItem">首页</a>
+          
+            <a href="/tags" title="" class="menuItem">标签</a>
+          
+            <a href="/categories" title="" class="menuItem">分类</a>
+          
+            <a href="/archives" title="" class="menuItem">归档</a>
+          
+        </div>
+        
+          <audio id="audio" src="#"></audio>
+        
+      </div> 
+</div>
+<div id="overlay" style="opacity: 1; cursor: pointer;"></div>
+  <script type="text/javascript">var items = document.querySelectorAll('.menuItem');
+    for (var i = 0,
+    l = items.length; i < l; i++) {
+      items[i].style.left = (50 - 35 * Math.cos( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%";
+      items[i].style.top = (50 + 35 * Math.sin( - 0.5 * Math.PI - 2 * (1 / l) * i * Math.PI)).toFixed(4) + "%"
+    }</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('body').GalMenu({
+      'menu': 'GalDropDown'
+    })
+  });
+</script>
+
+  <section class="hidden-xs">
+  <ul class="cb-slideshow">
+    <li><span>苟</span></li>
+    <li><span>国</span></li>
+    <li><span>生</span></li>
+    <li><span>岂</span></li>
+    <li><span>祸</span></li>
+    <li><span>趋</span></li>
+  </ul>
+</section>
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
